@@ -1,4 +1,5 @@
-FROM ubuntu:14.04
-RUN apt-get update && apt-get install -y apache2 && apt-get install -y apache2-utils && apt-get clean
+FROM ubuntu
+RUN apt-get update && apt-get install -y nginx && apt-get install -y nginx
+COPY index.html /var/www/html
 EXPOSE 80
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+CMD ["nginx", "-g", "daemon off;"]
